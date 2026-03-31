@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Soft Inmobiliario</title>
+
+    <link rel="stylesheet" href="mdb/css/mdb.min.css">
+    <link rel="stylesheet" href="mdb/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        .card-custom {
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-main {
+            background: #3b6edc;
+            color: white;
+        }
+
+        .btn-main:hover {
+            background: #2d4f91;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #5A5A5A;
+            text-decoration: none !important;
+        }
+
+        header {
+            padding: 20px;
+            position: fixed;
+            z-index: 9999;
+            width: 100%;
+            background-color: transparent !important;
+        }
+
+        .header-login {
+            padding: 15px !important;
+            background-color: transparent !important;
+        }
+
+        label {
+            font-weight: 400 !important;
+        }
+
+        .sidenav {
+            background-color: #1d428a !important;
+            border-top-right-radius: 30px !important;
+            border-bottom-right-radius: 30px !important;
+        }
+
+        .container-main {
+            padding-left: 3rem;
+            padding-right: 3rem;
+            padding-top: 1rem;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        .fa-menu {
+            font-size: 1rem;
+        }
+
+        .fa-menu:hover {
+            color: #ffffff !important;
+        }
+
+        .text-bold {
+            font-weight: 700;
+        }
+
+        .sidenav .sidenav-link {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            width: 100%;
+        }
+
+
+        .sidenav .sidenav-link i.fa-menu {
+            width: 22px;
+            min-width: 22px;
+            text-align: center;
+        }
+
+
+        .sidenav .sidenav-link span[data-mdb-slim="false"] {
+            flex: 1;
+            white-space: nowrap;
+        }
+
+
+        .sidenav-collapse-icon {
+            margin-left: auto !important;
+            padding-left: 8px;
+        }
+
+        [data-mdb-slim="true"] .sidenav-collapse-icon {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav data-mdb-sidenav-init class="sidenav bg-dark" id="sidenav-1" data-mdb-mode="side" data-mdb-slim="false"
+        data-mdb-slim-collapsed="false" data-mdb-content="#content" data-mdb-accordion="true" data-mdb-mode="side"
+        data-mdb-color="light" data-mdb-scroll-container="#scroll-container">
+        <a data-mdb-ripple-init class="d-flex justify-content-center py-4" href="#!" id="slim-toggler"
+            data-mdb-ripple-color="primary">
+            <img id="PT-logo-full" width="200" src="img/log-azul.png" alt="Logo Portafolio Inmobiliario"
+                draggable="false" data-mdb-slim="false" />
+            <img id="PT-logo-slim" width="65" src="img/log-azul.png" alt="Logo Portafolio Inmobiliario Slim"
+                draggable="false" data-mdb-slim="true" />
+        </a>
+
+        <ul class="sidenav-menu">
+
+            <li class="sidenav-item">
+                <a href="index.html" class="sidenav-link">
+                    <i class="fa fa-home me-3"></i>Inicio
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a href="materiales.html" class="sidenav-link">
+                    <i class="fa fa-box me-3"></i>Materiales
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a href="bodega.html" class="sidenav-link">
+                    <i class="fa fa-warehouse me-3"></i>Bodegas
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a href="clientes.html" class="sidenav-link">
+                    <i class="fa fa-users me-3"></i>Clientes
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a href="departamentos.html" class="sidenav-link">
+                    <i class="fa-regular fa-helmet-safety me-3"></i>Departamentos
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a href="proyecto.html" class="sidenav-link">
+                    <i class="fa-regular fa-building me-3"></i>Proyectos
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a href="contratos.html" class="sidenav-link">
+                    <i class="fa fa-file-contract me-3"></i>Contratos
+                </a>
+            </li>
+
+            <li class="sidenav-item">
+                <a href="login.html" class="sidenav-link">
+                    <i class="fa fa-right-from-bracket me-3"></i>Cerrar sesión
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <main id="content">
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary nav-header">
+            <div class="container-fluid">
+                <a data-mdb-ripple-init data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1" class="btn-bars p-2"
+                    aria-controls="#sidenav-1" aria-haspopup="true">
+                    <i class="fas fa-bars"></i>
+                </a>
+
+                <span class="fw-bold">Sistema Control Inmobiliario</span>
+
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center" data-mdb-dropdown-init>
+                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="35">
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+        <div class="container mt-4">
+
+            <h4 class="text-primary mb-3">Gestión de Departamentos</h4>
+
+            <div class="card card-custom p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h5>Departamentos</h5>
+
+                    <div class="d-flex gap-2">
+
+                        <div class="input-group">
+                            <div class="form-outline" data-mdb-input-init>
+                                <input type="search" id="searchDepartamento" class="form-control" />
+                                <label class="form-label">Buscar</label>
+                            </div>
+                            <button class="btn btn-primary" onclick="buscarDepartamento()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+
+                        <button class="btn btn-outline-primary" onclick="abrirModalDepartamento()" data-mdb-modal-init
+                            data-mdb-target="#modalDepartamento">
+                            AGREGAR
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaDepartamentos"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+    <div class="modal fade" id="modalDepartamento">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 id="tituloDepartamento">Nuevo Departamento</h5>
+                    <button class="btn-close" data-mdb-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form onsubmit="guardarDepartamento(event)">
+
+                        <input type="hidden" id="departamentoId">
+
+                        <div class="mb-3">
+                            <label>Nombre</label>
+                            <input type="text" id="nombreDepartamento" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Descripción</label>
+                            <input type="text" id="descripcionDepartamento" class="form-control">
+                        </div>
+
+                        <button class="btn btn-main w-100">Guardar</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const API_URL = "http://localhost:5000/api";
+
+        document.addEventListener("DOMContentLoaded", cargarDepartamentos);
+
+        async function cargarDepartamentos() {
+            const res = await fetch(`${API_URL}/departamentos`);
+            const data = await res.json();
+
+            const tabla = document.getElementById("tablaDepartamentos");
+            tabla.innerHTML = "";
+
+            data.forEach(d => {
+                tabla.innerHTML += `
+            <tr>
+                <td>${d.nombre}</td>
+                <td>${d.descripcion || ""}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning"
+                        onclick='editarDepartamento(${JSON.stringify(d)})'>
+                        <i class="fa fa-edit"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+            });
+        }
+
+        function abrirModalDepartamento() {
+            document.getElementById("tituloDepartamento").innerText = "Nuevo Departamento";
+            document.getElementById("departamentoId").value = "";
+            document.querySelector("#modalDepartamento form").reset();
+        }
+
+        function editarDepartamento(d) {
+            document.getElementById("tituloDepartamento").innerText = "Editar Departamento";
+
+            document.getElementById("departamentoId").value = d._id;
+            document.getElementById("nombreDepartamento").value = d.nombre;
+            document.getElementById("descripcionDepartamento").value = d.descripcion || "";
+
+            const modal = new mdb.Modal(document.getElementById("modalDepartamento"));
+            modal.show();
+        }
+
+        async function guardarDepartamento(e) {
+            e.preventDefault();
+
+            const id = document.getElementById("departamentoId").value;
+
+            const data = {
+                nombre: document.getElementById("nombreDepartamento").value,
+                descripcion: document.getElementById("descripcionDepartamento").value
+            };
+
+            if (id) {
+                await fetch(`${API_URL}/departamentos/${id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+            } else {
+                await fetch(`${API_URL}/departamentos`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+            }
+
+            cargarDepartamentos();
+
+            const modal = mdb.Modal.getInstance(document.getElementById("modalDepartamento"));
+            modal.hide();
+        }
+
+        function buscarDepartamento() {
+            const valor = document.getElementById("searchDepartamento").value.toLowerCase();
+            const filas = document.querySelectorAll("#tablaDepartamentos tr");
+
+            filas.forEach(f => {
+                f.style.display = f.innerText.toLowerCase().includes(valor) ? "" : "none";
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <!-- MDB ESSENTIAL -->
+    <script type="text/javascript" src="mdb/js/mdb.umd.min.js"></script>
+    <!-- MDB PLUGINS -->
+    <script type="text/javascript" src="mdb/plugins/js/all.min.js"></script>
+    <script src="https://kit.fontawesome.com/4b2f294736.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"
+        integrity="sha384-4sVjEJ9wB1jL7gYhLq+2iqTt+0nYyK8iZ+QkN0D+Vb5H5DkLtS3qm9Ekf4a8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
