@@ -144,6 +144,7 @@ pre{
 }
 .bg-warning {
     background-color: #426da9 !important;
+    color: #FFFFFF !important;
 }
 .bg-default{
     background-color: #1D428A !important;
@@ -437,4 +438,14 @@ div.dt-button-collection button.dt-button, div.dt-button-collection div.dt-butto
   .alert-info{
     background-color: #e1eaf7!important;
     color: #1D428A !important;
+  }
+  .btn-table{
+    border-radius: none;
+    background-color: transparent !important;
+    border: none !important;
+    color: #1D428A !important;
+    font-size: 1.2em;
+  }
+  .fa-trash{
+    color: #CD5151 !important;
   }

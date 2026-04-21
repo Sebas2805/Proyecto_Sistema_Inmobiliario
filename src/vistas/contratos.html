@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Inmobiliario</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <!-- MDB ESSENTIAL -->
+    <link rel="stylesheet" href="mdb/css/mdb.min.css" />
+    <!-- MDB PLUGINS -->
+    <link rel="stylesheet" href="mdb/plugins/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.2.0/mdb.min.css" rel="stylesheet" />
+    <!-- SITE GENERAL -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+</head>
+
+<body>
+    <nav data-mdb-sidenav-init class="sidenav bg-dark" id="sidenav-1" data-mdb-mode="side" data-mdb-slim="false"
+        data-mdb-slim-collapsed="false" data-mdb-content="#content" data-mdb-accordion="true" data-mdb-mode="side"
+        data-mdb-color="light" data-mdb-scroll-container="#scroll-container">
+        <a data-mdb-ripple-init class="d-flex justify-content-center py-4" href="#!" id="slim-toggler"
+            data-mdb-ripple-color="primary">
+            <img id="PT-logo-full" width="220" src="img/log-azul.png" alt="Logo Portafolio Inmobiliario"
+                draggable="false" data-mdb-slim="false" />
+            <img id="PT-logo-slim" width="59" src="img/isotipo.png" alt="Logo Portafolio Inmobiliario Slim"
+                draggable="false" data-mdb-slim="true" />
+        </a>
+        <ul class="sidenav-menu" id="scroll-container">
+            <li class="sidenav-item">
+                <a class="sidenav-link"><i class="fa-regular fa-menu fa-house me-3"></i><span
+                        data-mdb-slim="false">Inicio</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link active" href="proyecto.html">Dashboard principal</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link"><i class="fa-thin fa-calculator fa-menu fa-icons me-3"
+                        title="Facturación"></i><span data-mdb-slim="false">Facturación</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="contratos.html">Contratos</a>
+                    </li>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="facturas.html">Facturas</a>
+                    </li>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="movimientos.html">Movimientos</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link"><i class="fa-regular fa-person-digging fa-menu me-3"></i><span
+                        data-mdb-slim="false">Materiales</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="bodega.html">Bodegas</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidenav-item">
+                <a href="clientes.html" class="sidenav-link">
+                    <i class="fa-regular fa-users me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Clientes</span>
+                </a>
+            </li>
+            <li class="sidenav-item">
+                <a href="departamentos.html" class="sidenav-link">
+                    <i class="fa-regular fa-briefcase me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Departamentos</span>
+                </a>
+            </li>
+             <li class="sidenav-item">
+                <a href="#" class="sidenav-link" onclick="cerrarSesion()">
+                    <i class="fa-regular fa-right-from-bracket me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main id="content">
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary nav-header">
+            <div class="container-fluid">
+                <a data-mdb-ripple-init data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1" class="btn-bars p-2"
+                    aria-controls="#sidenav-1" aria-haspopup="true">
+                    <i class="fa-regular fa-bars-staggered"></i>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <p class="text-bold mt-3 ms-2">Gestión Inmobiliario</p>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+        <br>
+        <div class="mt-2">
+            <div class="container-main">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-7">
+                                <h4 class="text-primary">Gestión de Contratos</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <div class="form-outline" data-mdb-input-init>
+                                        <input type="search" id="searchContrato" class="form-control" />
+                                        <label class="form-label" for="searchContrato">Search</label>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary w-100" onclick="AgregarmodalContrato()">
+                                    <i class="fa fa-plus me-2"></i>Nuevo Contrato
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="listaContratos"></div>
+
+                        <nav class="mt-4">
+                            <ul class="pagination justify-content-center" id="paginacion"></ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        </div>
+    </main>
+    <div class="modal fade" id="modalContrato">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5>Editar Contrato</h5>
+                    <button class="btn-close" data-mdb-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form onsubmit="guardarContrato(event)">
+
+                        <input type="hidden" id="contratoId">
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="number" id="montoContrato" class="form-control" />
+                            <label class="form-label">Monto mensual</label>
+                        </div>
+                        <select id="estadoContrato" class="form-select mb-3">
+                            <option value="Activo">Activo</option>
+                            <option value="Finalizado">Finalizado</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+
+                        <button class="btn btn-primary w-100">Guardar</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="AgregarmodalContrato" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloContrato">Nuevo Contrato</h5>
+                    <button class="btn-close" data-mdb-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form onsubmit="guardarContratoNuevo(event)">
+
+                        <input type="hidden" id="contratoId">
+
+                        <div class="mb-3">
+                            <select id="clienteContrato" data-mdb-select-init required></select>
+                            <label class="form-label select-label">Cliente</label>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <select id="propiedadContrato" data-mdb-select-init required></select>
+                            <label class="form-label select-label">Propiedad disponible</label>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline mb-3" data-mdb-input-init>
+                                    <input type="date" id="fechaInicio" class="form-control" required />
+                                    <label class="form-label">Fecha inicio</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-outline mb-3" data-mdb-input-init>
+                                    <input type="date" id="fechaFin" class="form-control" required />
+                                    <label class="form-label">Fecha fin</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline mb-3" data-mdb-input-init>
+                                    <input type="number" id="montoMensual" class="form-control" required />
+                                    <label class="form-label">Monto mensual</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-outline mb-3" data-mdb-input-init>
+                                    <input type="number" id="deposito" class="form-control" required />
+                                    <label class="form-label">Depósito</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <select id="estadoContrato" data-mdb-select-init>
+                                <option value="Activo">Activo</option>
+                                <option value="Finalizado">Finalizado</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
+                            <label class="form-label select-label">Estado</label>
+                        </div>
+
+                        <button class="btn btn-primary w-100">Guardar Contrato</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        if (!localStorage.getItem("usuario")) {
+            window.location.href = "index.html";
+        }
+        const API_URL = "http://localhost:5000/api";
+
+        let contratos = [];
+        let contratosFiltrados = [];
+        let paginaActual = 1;
+        const porPagina = 5;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarDatos();
+            activarBuscador();
+        });
+
+
+        async function cargarDatos() {
+            try {
+                const [resContratos, resClientes, resPropiedades] = await Promise.all([
+                    fetch(`${API_URL}/contratos`),
+                    fetch(`${API_URL}/clientes`),
+                    fetch(`${API_URL}/propiedades`)
+                ]);
+
+                const dataContratos = await resContratos.json();
+                const clientes = await resClientes.json();
+                const propiedades = await resPropiedades.json();
+
+                const mapaClientes = {};
+                clientes.forEach(c => mapaClientes[c._id] = c);
+
+                const mapaPropiedades = {};
+                propiedades.forEach(p => mapaPropiedades[p._id] = p);
+
+                contratos = dataContratos.map(c => ({
+                    ...c,
+                    cliente: mapaClientes[c.cliente_id]?.nombre || "Sin cliente",
+                    propiedad: mapaPropiedades[c.propiedad_id]?.codigo || "Sin propiedad"
+                }));
+
+                contratosFiltrados = [...contratos];
+
+                render();
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function render() {
+            renderLista();
+            renderPaginacion();
+        }
+
+        function renderLista() {
+            const contenedor = document.getElementById("listaContratos");
+            contenedor.innerHTML = "";
+
+            const inicio = (paginaActual - 1) * porPagina;
+            const fin = inicio + porPagina;
+
+            const pagina = contratosFiltrados.slice(inicio, fin);
+
+            if (pagina.length === 0) {
+                contenedor.innerHTML = `<p class="text-center">No hay contratos</p>`;
+                return;
+            }
+
+            pagina.forEach(c => {
+                contenedor.innerHTML += `
+      <div class="card mb-3 shadow-sm">
+            <div class="card-header">
+             <span class="badge ${c.estado === "Activo" ? "bg-success" :
+                        c.estado === "Finalizado" ? "bg-primary" :
+                            "bg-danger"
+                    }">
+              ${c.estado}
+            </span>
+            </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-10">
+                <h6 class="mb-1">${c.propiedad} / consecutivo: ${c._id || 0}</h6>
+                <small class="text-muted">${c.cliente}</small><br>
+                 <small>$${c.monto_mensual} / mes</small>
+            </div>
+            <div class="col-md-2 text-end">
+            <button class="btn btn-outline-primary btn-sm mt-2"
+              onclick='editarContrato(${JSON.stringify(c)})'>
+              Editar
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+            });
+        }
+
+
+        function renderPaginacion() {
+            const totalPaginas = Math.ceil(contratosFiltrados.length / porPagina);
+            const pag = document.getElementById("paginacion");
+            pag.innerHTML = "";
+
+
+            pag.innerHTML += `
+      <li class="page-item ${paginaActual === 1 ? "disabled" : ""}">
+        <a class="page-link" href="#" onclick="cambiarPagina(${paginaActual - 1})">
+          Previous
+        </a>
+      </li>
+    `;
+
+
+            for (let i = 1; i <= totalPaginas; i++) {
+                pag.innerHTML += `
+          <li class="page-item ${i === paginaActual ? "active" : ""}">
+            <a class="page-link" href="#" onclick="cambiarPagina(${i})">
+              ${i}
+            </a>
+          </li>
+        `;
+            }
+
+            pag.innerHTML += `
+      <li class="page-item ${paginaActual === totalPaginas ? "disabled" : ""}">
+        <a class="page-link" href="#" onclick="cambiarPagina(${paginaActual + 1})">
+          Next
+        </a>
+      </li>
+    `;
+        }
+
+        function cambiarPagina(p) {
+            const totalPaginas = Math.ceil(contratosFiltrados.length / porPagina);
+
+            if (p < 1 || p > totalPaginas) return;
+
+            paginaActual = p;
+            renderLista();
+            renderPaginacion();
+        }
+
+
+        function activarBuscador() {
+            document.getElementById("searchContrato").addEventListener("input", function () {
+                const valor = this.value.toLowerCase();
+
+                contratosFiltrados = contratos.filter(c =>
+                    c.cliente.toLowerCase().includes(valor) ||
+                    c.propiedad.toLowerCase().includes(valor)
+                );
+
+                paginaActual = 1;
+                render();
+            });
+        }
+
+
+        function editarContrato(c) {
+            document.getElementById("contratoId").value = c._id;
+            document.getElementById("montoContrato").value = c.monto_mensual;
+            document.getElementById("estadoContrato").value = c.estado;
+
+            new mdb.Modal(document.getElementById("modalContrato")).show();
+        }
+
+
+        async function guardarContrato(e) {
+            e.preventDefault();
+
+            const id = document.getElementById("contratoId").value;
+
+            const data = {
+                monto_mensual: Number(document.getElementById("montoContrato").value),
+                estado: document.getElementById("estadoContrato").value
+            };
+
+            try {
+                await fetch(`${API_URL}/contratos/${id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                mdb.Modal.getInstance(document.getElementById("modalContrato")).hide();
+
+                cargarDatos();
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        async function cargarSelectsContrato() {
+            try {
+                const [resClientes, resPropiedades] = await Promise.all([
+                    fetch(`${API_URL}/clientes`),
+                    fetch(`${API_URL}/propiedades`)
+                ]);
+
+                const clientes = await resClientes.json();
+                const propiedades = await resPropiedades.json();
+
+                const selectClientes = document.getElementById("clienteContrato");
+                const selectPropiedades = document.getElementById("propiedadContrato");
+
+                selectClientes.innerHTML = "";
+                selectPropiedades.innerHTML = "";
+
+
+                clientes.forEach(c => {
+                    selectClientes.innerHTML += `
+        <option value="${c._id}">${c.nombre} - ${c.identificacion}</option>
+      `;
+                });
+
+                propiedades
+                    .filter(p => p.estado === "Disponible")
+                    .forEach(p => {
+                        selectPropiedades.innerHTML += `
+          <option value="${p._id}">
+            ${p.codigo} - ${p.direccion || ""} - ${p.tipo || ""}
+          </option>
+        `;
+                    });
+
+                const instanceCliente = mdb.Select.getInstance(selectClientes);
+                if (instanceCliente) instanceCliente.dispose();
+
+                const instanceProp = mdb.Select.getInstance(selectPropiedades);
+                if (instanceProp) instanceProp.dispose();
+
+                new mdb.Select(selectClientes);
+                new mdb.Select(selectPropiedades);
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        async function AgregarmodalContrato() {
+            document.getElementById("tituloContrato").innerText = "Nuevo Contrato";
+            document.getElementById("contratoId").value = "";
+            document.querySelector("#AgregarmodalContrato form").reset();
+
+            await cargarSelectsContrato();
+
+            const modal = new mdb.Modal(document.getElementById("AgregarmodalContrato"));
+            modal.show();
+        }
+        async function guardarContratoNuevo(e) {
+            e.preventDefault();
+
+            const id = document.getElementById("contratoId").value;
+            const propiedadId = document.getElementById("propiedadContrato").value;
+
+            const data = {
+                cliente_id: document.getElementById("clienteContrato").value,
+                propiedad_id: propiedadId,
+                fecha_inicio: document.getElementById("fechaInicio").value,
+                fecha_fin: document.getElementById("fechaFin").value,
+                monto_mensual: Number(document.getElementById("montoMensual").value),
+                deposito: Number(document.getElementById("deposito").value),
+                estado: document.getElementById("estadoContrato").value
+            };
+
+            try {
+                if (id) {
+                    await fetch(`${API_URL}/contratos/${id}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data)
+                    });
+                } else {
+                    await fetch(`${API_URL}/contratos`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data)
+                    });
+                    await fetch(`${API_URL}/propiedades/${propiedadId}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            estado: "Alquilada"
+                        })
+                    });
+                }
+
+                Swal.fire("Éxito", "Contrato guardado correctamente", "success");
+
+                const modal = mdb.Modal.getInstance(document.getElementById("AgregarmodalContrato"));
+                modal.hide();
+
+                cargarDatos();
+
+            } catch (error) {
+                console.error(error);
+                Swal.fire("Error", "No se pudo guardar", "error");
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <!-- MDB ESSENTIAL -->
+    <script type="text/javascript" src="mdb/js/mdb.umd.min.js"></script>
+    <!-- MDB PLUGINS -->
+    <script type="text/javascript" src="mdb/plugins/js/all.min.js"></script>
+    <script src="https://kit.fontawesome.com/4b2f294736.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script type="text/javascript" src="js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+</body>
+
+</html>

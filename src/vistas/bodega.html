@@ -1,112 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Soft Inmobiliario</title>
-
-    <link rel="stylesheet" href="mdb/css/mdb.min.css">
-    <link rel="stylesheet" href="mdb/css/all.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        .card-custom {
-            border-radius: 15px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .btn-main {
-            background: #3b6edc;
-            color: white;
-        }
-
-        .btn-main:hover {
-            background: #2d4f91;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #5A5A5A;
-            text-decoration: none !important;
-        }
-
-        header {
-            padding: 20px;
-            position: fixed;
-            z-index: 9999;
-            width: 100%;
-            background-color: transparent !important;
-        }
-
-        .header-login {
-            padding: 15px !important;
-            background-color: transparent !important;
-        }
-
-        label {
-            font-weight: 400 !important;
-        }
-
-        .sidenav {
-            background-color: #1d428a !important;
-            border-top-right-radius: 30px !important;
-            border-bottom-right-radius: 30px !important;
-        }
-
-        .container-main {
-            padding-left: 3rem;
-            padding-right: 3rem;
-            padding-top: 1rem;
-        }
-
-        a {
-            text-decoration: none !important;
-        }
-
-        .fa-menu {
-            font-size: 1rem;
-        }
-
-        .fa-menu:hover {
-            color: #ffffff !important;
-        }
-
-        .text-bold {
-            font-weight: 700;
-        }
-
-        .sidenav .sidenav-link {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            width: 100%;
-        }
-
-
-        .sidenav .sidenav-link i.fa-menu {
-            width: 22px;
-            min-width: 22px;
-            text-align: center;
-        }
-
-
-        .sidenav .sidenav-link span[data-mdb-slim="false"] {
-            flex: 1;
-            white-space: nowrap;
-        }
-
-
-        .sidenav-collapse-icon {
-            margin-left: auto !important;
-            padding-left: 8px;
-        }
-
-        [data-mdb-slim="true"] .sidenav-collapse-icon {
-            display: none !important;
-        }
-    </style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodegas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <!-- MDB ESSENTIAL -->
+    <link rel="stylesheet" href="mdb/css/mdb.min.css" />
+    <!-- MDB PLUGINS -->
+    <link rel="stylesheet" href="mdb/plugins/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.2.0/mdb.min.css" rel="stylesheet" />
+    <!-- SITE GENERAL -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body>
@@ -115,214 +27,343 @@
         data-mdb-color="light" data-mdb-scroll-container="#scroll-container">
         <a data-mdb-ripple-init class="d-flex justify-content-center py-4" href="#!" id="slim-toggler"
             data-mdb-ripple-color="primary">
-            <img id="PT-logo-full" width="200" src="img/log-azul.png" alt="Logo Portafolio Inmobiliario"
+            <img id="PT-logo-full" width="220" src="img/log-azul.png" alt="Logo Portafolio Inmobiliario"
                 draggable="false" data-mdb-slim="false" />
-            <img id="PT-logo-slim" width="65" src="img/log-azul.png" alt="Logo Portafolio Inmobiliario Slim"
+            <img id="PT-logo-slim" width="59" src="img/isotipo.png" alt="Logo Portafolio Inmobiliario Slim"
                 draggable="false" data-mdb-slim="true" />
         </a>
-
-        <ul class="sidenav-menu">
-
+        <ul class="sidenav-menu" id="scroll-container">
             <li class="sidenav-item">
-                <a href="index.html" class="sidenav-link">
-                    <i class="fa fa-home me-3"></i>Inicio
-                </a>
+                <a class="sidenav-link"><i class="fa-regular fa-menu fa-house me-3"></i><span
+                        data-mdb-slim="false">Inicio</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link active" href="proyecto.html">Dashboard principal</a>
+                    </li>
+                </ul>
             </li>
-
             <li class="sidenav-item">
-                <a href="materiales.html" class="sidenav-link">
-                    <i class="fa fa-box me-3"></i>Materiales
-                </a>
+                <a class="sidenav-link"><i class="fa-thin fa-calculator fa-menu fa-icons me-3"
+                        title="Facturación"></i><span data-mdb-slim="false">Facturación</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="contratos.html">Contratos</a>
+                    </li>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="facturas.html">Facturas</a>
+                    </li>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="movimientos.html">Movimientos</a>
+                    </li>
+                </ul>
             </li>
-
             <li class="sidenav-item">
-                <a href="bodega.html" class="sidenav-link">
-                    <i class="fa fa-warehouse me-3"></i>Bodegas
-                </a>
+                <a class="sidenav-link"><i class="fa-regular fa-person-digging fa-menu me-3"></i><span
+                        data-mdb-slim="false">Materiales</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="bodega.html">Bodegas</a>
+                    </li>
+                </ul>
             </li>
-
             <li class="sidenav-item">
                 <a href="clientes.html" class="sidenav-link">
-                    <i class="fa fa-users me-3"></i>Clientes
+                    <i class="fa-regular fa-users me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Clientes</span>
                 </a>
             </li>
-
             <li class="sidenav-item">
                 <a href="departamentos.html" class="sidenav-link">
-                    <i class="fa-regular fa-helmet-safety me-3"></i>Departamentos
+                    <i class="fa-regular fa-briefcase me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Departamentos</span>
                 </a>
             </li>
-
-            <li class="sidenav-item">
-                <a href="proyecto.html" class="sidenav-link">
-                    <i class="fa-regular fa-building me-3"></i>Proyectos
+             <li class="sidenav-item">
+                <a href="#" class="sidenav-link" onclick="cerrarSesion()">
+                    <i class="fa-regular fa-right-from-bracket me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Cerrar sesión</span>
                 </a>
             </li>
-
-            <li class="sidenav-item">
-                <a href="contratos.html" class="sidenav-link">
-                    <i class="fa fa-file-contract me-3"></i>Contratos
-                </a>
-            </li>
-
-            <li class="sidenav-item">
-                <a href="login.html" class="sidenav-link">
-                    <i class="fa fa-right-from-bracket me-3"></i>Cerrar sesión
-                </a>
-            </li>
-
         </ul>
     </nav>
-
     <main id="content">
         <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary nav-header">
             <div class="container-fluid">
                 <a data-mdb-ripple-init data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1" class="btn-bars p-2"
                     aria-controls="#sidenav-1" aria-haspopup="true">
-                    <i class="fas fa-bars"></i>
+                    <i class="fa-regular fa-bars-staggered"></i>
                 </a>
-
-                <span class="fw-bold">Sistema Control Inmobiliario</span>
-
-                <div class="dropdown">
-                    <a class="dropdown-toggle d-flex align-items-center" data-mdb-dropdown-init>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="35">
-                    </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <p class="text-bold mt-3 ms-2">Gestión Inmobiliario</p>
                 </div>
-
             </div>
         </nav>
-        <div class="container mt-4">
-
-            <h4 class="text-primary mb-3">Información Materiales en Bodegas</h4>
-
-            <div class="card card-custom p-4">
-
-                <div class="d-flex justify-content-between align-items-center mb-3">
-
-                    <h5>Materiales en Bodegas</h5>
-
-                    <div class="d-flex gap-2">
-                        <div class="input-group">
-                            <div class="form-outline" data-mdb-input-init>
-                                <input type="search" id="search-inputBodegas" class="form-control" />
-                                <label class="form-label" for="search-inputBodegas">Buscar</label>
+        <!-- Navbar -->
+        <br>
+        <div class="mt-2">
+            <div class="container-main">
+                <h4 class="text-primary">Gestión de Bodegas</h4>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-5 mb-2">
+                                        <div class="input-group">
+                                            <div class="form-outline" data-mdb-input-init>
+                                                <input type="search" id="searchBodega" class="form-control" />
+                                                <label class="form-label">Buscar</label>
+                                            </div>
+                                            <button class="btn btn-primary">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-primary w-100" onclick="abrirModalBodega()">+
+                                            Bodega</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-outline-primary w-100" onclick="abrirModalMaterial()">+
+                                            Material</button>
+                                    </div>
+                                </div>
+                                <div class="row" id="contenedorBodegas"></div>
                             </div>
-                            <button type="button" class="btn btn-primary" data-mdb-ripple-init onclick="buscar()">
-                                <i class="fas fa-search"></i>
-                            </button>
+
                         </div>
-                        <button class="btn btn-outline-primary" data-mdb-modal-init data-mdb-target="#modalMaterial">
-                            AGREGAR
-                        </button>
 
                     </div>
-
-                </div>
-                <div class="table-responsive">
-                    <table class="table align-middle">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Material</th>
-                                <th>Bodega</th>
-                                <th>Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaMateriales"></tbody>
-                    </table>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Ubicación de las Bodegas</h5>
+                                <gmp-map center="37.4220656,-122.0840897" zoom="10" map-id="DEMO_MAP_ID"
+                                    style="height: 500px"></gmp-map>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-
         </div>
-
+        <br>
+        </div>
+        <!-- Footer -->
     </main>
-
-    <div class="modal fade" id="modalMaterial">
+    <div class="modal fade" id="modalBodega" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5>Agregar Material</h5>
+                    <h5 id="tituloBodega">Nueva Bodega</h5>
                     <button class="btn-close" data-mdb-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
+                    <form onsubmit="guardarBodega(event)">
 
-                    <form onsubmit="guardarMaterial(event)">
+                        <input type="hidden" id="bodegaId">
 
-                        <div class="mb-3">
-                            <label>Nombre</label>
-                            <input type="text" id="nombreMaterial" class="form-control" required>
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="nombreBodega" class="form-control" required />
+                            <label class="form-label">Nombre</label>
                         </div>
 
-                        <div class="mb-3">
-                            <label>Bodega</label>
-                            <select id="idBodegaSelect" class="form-select" required>
-                                <option value="">Seleccione</option>
-                            </select>
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="ubicacionBodega" class="form-control" />
+                            <label class="form-label">Ubicación</label>
                         </div>
 
-                        <div class="mb-3">
-                            <label>Stock</label>
-                            <input type="number" id="stock" class="form-control" value="0">
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="encargadoBodega" class="form-control" />
+                            <label class="form-label">Encargado</label>
                         </div>
 
-                        <button class="btn btn-main w-100">Guardar</button>
+                        <button class="btn btn-primary w-100">Guardar</button>
 
                     </form>
-
                 </div>
 
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+    <div class="modal fade" id="modalMaterial" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5>Nuevo Material</h5>
+                    <button class="btn-close" data-mdb-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form onsubmit="guardarMaterial(event)">
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="nombreMaterial" class="form-control" required />
+                            <label class="form-label">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="number" id="stockMaterial" class="form-control" />
+                            <label class="form-label">Stock</label>
+                        </div>
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="unidadMaterial" class="form-control" required />
+                            <label class="form-label">Unidad de medida</label>
+                        </div>
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="number" id="precioMaterial" class="form-control" required />
+                            <label class="form-label">Precio unitario</label>
+                        </div>
+
+                        <select id="bodegaSelect" data-mdb-select-init>
+                        </select>
+                        <label class="form-label select-label">Bodega</label>
+
+                        <button class="btn btn-primary w-100 mt-3">Guardar</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-
+        if (!localStorage.getItem("usuario")) {
+    window.location.href = "index.html";
+}
         const API_URL = "http://localhost:5000/api";
-
-        document.addEventListener("DOMContentLoaded", () => {
-            cargarDatos();
-            cargarBodegas();
-        });
-
-        async function cargarDatos() {
-            const [resMateriales, resBodegas] = await Promise.all([
-                fetch(`${API_URL}/materiales`),
-                fetch(`${API_URL}/bodegas`)
-            ]);
-
-            const materiales = await resMateriales.json();
-            const bodegas = await resBodegas.json();
-
-            const tabla = document.getElementById("tablaMateriales");
-            tabla.innerHTML = "";
-
-            materiales.forEach(mat => {
-                const bodega = bodegas.find(b => b._id === mat.bodega_id);
-
-                tabla.innerHTML += `
-            <tr>
-                <td>${mat._id}</td>
-                <td>${mat.nombre}</td>
-                <td>${bodega ? bodega.nombre : "Sin asignar"}</td>
-                <td>${mat.stock_actual || 0}</td>
-            </tr>
-        `;
-            });
-        }
-
         async function cargarBodegas() {
             const res = await fetch(`${API_URL}/bodegas`);
             const bodegas = await res.json();
 
-            const select = document.getElementById("idBodegaSelect");
+            const contenedor = document.getElementById("contenedorBodegas");
+            contenedor.innerHTML = "";
 
             bodegas.forEach(b => {
+                contenedor.innerHTML += `
+      <div class="col-md-6 mb-4 bodega-item">
+        <div class="card shadow-sm h-100">
+
+          <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+
+              <div>
+                <h6 class="fw-bold">${b.nombre}</h6>
+                <p class="text-muted mb-1">
+                  <i class="fa-regular fa-location-dot"></i> ${b.ubicacion || "Sin ubicación"}
+                </p>
+                <p class="mb-0">
+                 ${b.encargado || "Sin encargado"}
+                </p>
+              </div>
+
+              <div class="d-flex flex-column gap-2">
+                <button class="btn btn-sm btn-primary"
+                  onclick='editarBodega(${JSON.stringify(b)})'>
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button class="btn btn-sm btn-info"
+                  onclick="verMateriales('${b._id}')">
+                  <i class="fa-light fa-hammer-brush"></i>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    `;
+            });
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarBodegas();
+            cargarBodegasSelect();
+        });
+        document.getElementById("searchBodega").addEventListener("input", function () {
+            const valor = this.value.toLowerCase();
+
+            document.querySelectorAll(".bodega-item").forEach(item => {
+                item.style.display = item.innerText.toLowerCase().includes(valor)
+                    ? ""
+                    : "none";
+            });
+        });
+
+        function abrirModalBodega() {
+            document.getElementById("bodegaId").value = "";
+            document.getElementById("tituloBodega").innerText = "Nueva Bodega";
+            document.querySelector("#modalBodega form").reset();
+
+            new mdb.Modal(document.getElementById("modalBodega")).show();
+        }
+
+        function editarBodega(b) {
+            document.getElementById("tituloBodega").innerText = "Editar Bodega";
+
+            document.getElementById("bodegaId").value = b._id;
+            document.getElementById("nombreBodega").value = b.nombre;
+            document.getElementById("ubicacionBodega").value = b.ubicacion;
+            document.getElementById("encargadoBodega").value = b.encargado;
+
+            new mdb.Modal(document.getElementById("modalBodega")).show();
+        }
+
+        async function guardarBodega(e) {
+            e.preventDefault();
+
+            const id = document.getElementById("bodegaId").value;
+
+            const data = {
+                nombre: document.getElementById("nombreBodega").value,
+                ubicacion: document.getElementById("ubicacionBodega").value,
+                encargado: document.getElementById("encargadoBodega").value
+            };
+
+            if (id) {
+                await fetch(`${API_URL}/bodegas/${id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+            } else {
+                await fetch(`${API_URL}/bodegas`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+            }
+
+            mdb.Modal.getInstance(document.getElementById("modalBodega")).hide();
+            cargarBodegas();
+        }
+
+        function abrirModalMaterial() {
+            document.querySelector("#modalMaterial form").reset();
+            new mdb.Modal(document.getElementById("modalMaterial")).show();
+        }
+
+        async function cargarBodegasSelect() {
+            const res = await fetch(`${API_URL}/bodegas`);
+            const data = await res.json();
+
+            const select = document.getElementById("bodegaSelect");
+            select.innerHTML = "";
+
+            data.forEach(b => {
                 select.innerHTML += `<option value="${b._id}">${b.nombre}</option>`;
             });
+
+            new mdb.Select(select);
         }
 
         async function guardarMaterial(e) {
@@ -330,8 +371,8 @@
 
             const data = {
                 nombre: document.getElementById("nombreMaterial").value,
-                stock_actual: parseInt(document.getElementById("stock").value) || 0,
-                bodega_id: document.getElementById("idBodegaSelect").value
+                stock_actual: Number(document.getElementById("stockMaterial").value),
+                bodega_id: document.getElementById("bodegaSelect").value
             };
 
             await fetch(`${API_URL}/materiales`, {
@@ -340,39 +381,33 @@
                 body: JSON.stringify(data)
             });
 
-            cargarDatos();
-            e.target.reset();
-
-            const modal = document.getElementById('modalMaterial');
-            const instance = mdb.Modal.getInstance(modal);
-            instance.hide();
+            mdb.Modal.getInstance(document.getElementById("modalMaterial")).hide();
         }
 
-        function buscar() {
-            const valor = document.getElementById("search-inputBodegas").value.toLowerCase();
-            const filas = document.querySelectorAll("#tablaMateriales tr");
 
-            filas.forEach(f => {
-                f.style.display = f.innerText.toLowerCase().includes(valor) ? "" : "none";
+        function verMateriales(id) {
+            window.location.href = `materiales.html?bodega=${id}`;
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK3NyiU5hgFPmnP4kr3CSbi23hzgw4jT0"></script>
+    <script>
+        function initMap() {
+            const costaRica = { lat: 9.7489, lng: -83.7534 };
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 7,
+                center: costaRica,
+            });
+
+            new google.maps.Marker({
+                position: costaRica,
+                map: map,
+                title: "Costa Rica",
             });
         }
-        const slimInstance = mdb.Sidenav.getInstance(document.getElementById('sidenav-1'));
 
-        slimInstance.show();
-
-        document.getElementById('slim-toggler').addEventListener('click', () => {
-            slimInstance.toggleSlim();
-        })
-        document.addEventListener('shown.bs.collapse', function (e) {
-            const codeBlock = e.target.querySelector("code");
-            if (codeBlock) {
-                Prism.highlightElement(codeBlock);
-            }
-        });
-
-
+        window.onload = initMap;
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <!-- MDB ESSENTIAL -->
     <script type="text/javascript" src="mdb/js/mdb.umd.min.js"></script>
     <!-- MDB PLUGINS -->
@@ -381,9 +416,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"
-        integrity="sha384-4sVjEJ9wB1jL7gYhLq+2iqTt+0nYyK8iZ+QkN0D+Vb5H5DkLtS3qm9Ekf4a8"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Plugin JS para line numbers -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script type="text/javascript" src="js/site.js"></script>
+    <!-- Plugin sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 </body>
 
 </html>

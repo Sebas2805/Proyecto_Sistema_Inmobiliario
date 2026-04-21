@@ -97,27 +97,26 @@
                     <i class="fa-regular fa-bars-staggered"></i>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <p class="text-bold mt-3 ms-2">Gestión Inmobiliario</p>
+                    <p class="text-bold mt-3 ms-2">Gestión Inmobiliaria</p>
                 </div>
             </div>
         </nav>
-        <!-- Navbar -->
         <br>
         <div class="mt-2">
             <div class="container-main">
-                <h4 class="text-primary mb-3">Gestión de Clientes</h4>
+                <h4 class="text-primary mb-3">Gestión de Movimientos</h4>
 
                 <div class="card card-custom p-4">
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
 
-                        <h5>Clientes</h5>
+                        <h5>Movimientos Financieros</h5>
 
                         <div class="d-flex gap-2">
 
                             <div class="input-group">
                                 <div class="form-outline" data-mdb-input-init>
-                                    <input type="search" id="searchCliente" class="form-control" />
+                                    <input type="search" id="searchMovimiento" class="form-control" />
                                     <label class="form-label">Buscar</label>
                                 </div>
                                 <button class="btn btn-primary">
@@ -125,8 +124,8 @@
                                 </button>
                             </div>
 
-                            <button class="btn btn-outline-primary" onclick="abrirModal()" data-mdb-modal-init
-                                data-mdb-target="#modalCliente">
+                            <button class="btn btn-outline-primary" data-mdb-modal-init onclick="abrirModalMovimiento()"
+                                data-mdb-target="#modalMovimiento">
                                 AGREGAR
                             </button>
 
@@ -135,88 +134,88 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table align-middle" id="Clientes">
+                        <table class="table align-middle" id="Movimientos">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Identificación</th>
-                                    <th>Teléfono</th>
-                                    <th>Email</th>
-                                    <th>Estado</th>
+                                    <th>Tipo</th>
+                                    <th>Categoría</th>
+                                    <th>Referencia</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Descripción</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody id="tablaClientes"></tbody>
+                            <tbody id="tablaMovimientos"></tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
-        <br>
-        </div>
-        <!-- Footer -->
     </main>
-    <div class="modal fade" id="modalCliente" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="modalMovimiento" data-mdb-backdrop="static" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
+
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tituloModal">Nuevo Cliente</h5>
-                    <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal"
-                        aria-label="Close"></button>
+                    <h5 id="tituloMovimiento">Nuevo Movimiento</h5>
+                    <button class="btn-close" data-mdb-dismiss="modal"></button>
                 </div>
+
                 <div class="modal-body">
 
-                    <form onsubmit="guardarCliente(event)">
+                    <form onsubmit="guardarMovimiento(event)">
 
-                        <input type="hidden" id="clienteId">
+                        <input type="hidden" id="movimientoId">
 
-                        <div class="mb-3">
-                            <div class="form-outline" data-mdb-input-init>
-                                <input type="text" id="nombre" class="form-control" required />
-                                <label class="form-label" for="nombre">Nombre</label>
-                            </div>
-                        </div>
 
                         <div class="mb-3">
-                            <div class="form-outline" data-mdb-input-init>
-                                <input type="text" id="identificacion" class="form-control" required />
-                                <label class="form-label" for="identificacion">Identificación</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="form-outline" data-mdb-input-init>
-                                <input type="text" id="telefono" class="form-control">
-                                <label class="form-label" for="telefono">Teléfono</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="form-outline" data-mdb-input-init>
-                                <input type="email" id="email" class="form-control">
-                                <label class="form-label" for="email">Email</label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <select id="estado" data-mdb-select-init>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
+                            <select id="tipoMovimiento" data-mdb-select-init>
+                                <option value="Ingreso">Ingreso</option>
+                                <option value="Egreso">Egreso</option>
                             </select>
-                            <label class="form-label select-label">Estado del cliente</label>
+                            <label class="form-label select-label">Tipo</label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-main">Guardar</button>
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="categoriaMovimiento" class="form-control" required />
+                            <label class="form-label">Categoría</label>
+                        </div>
+
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="referenciaMovimiento" class="form-control" />
+                            <label class="form-label">Referencia</label>
+                        </div>
+
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="date" id="fechaMovimiento" class="form-control" required />
+                            <label class="form-label">Fecha</label>
+                        </div>
+
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="number" id="montoMovimiento" class="form-control" required />
+                            <label class="form-label">Monto</label>
+                        </div>
+
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="text" id="descripcionMovimiento" class="form-control" />
+                            <label class="form-label">Descripción</label>
+                        </div>
+
+                        <button class="btn btn-primary w-100">Guardar</button>
 
                     </form>
+
                 </div>
-
-
             </div>
         </div>
     </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         if (!localStorage.getItem("usuario")) {
             window.location.href = "index.html";
@@ -224,43 +223,56 @@
         const API_URL = "http://localhost:5000/api";
         let table;
         let timeoutBusqueda;
+
         document.addEventListener("DOMContentLoaded", () => {
-            cargarClientes();
+            cargarMovimientos();
             activarBuscador();
         });
 
-        async function cargarClientes() {
-            const res = await fetch(`${API_URL}/clientes`);
+        async function cargarMovimientos() {
+            const res = await fetch(`${API_URL}/movimientos`);
             const data = await res.json();
 
-            const tabla = document.getElementById("tablaClientes");
+            const tabla = document.getElementById("tablaMovimientos");
             tabla.innerHTML = "";
 
-            data.forEach(c => {
+            data.forEach(m => {
                 tabla.innerHTML += `
-            <tr>
-                <td>${c.nombre}</td>
-                <td>${c.identificacion || ""}</td>
-                <td>${c.telefono || ""}</td>
-                <td>${c.email || ""}</td>
-                <td>${c.estado || ""}</td>
-                <td>
-                    <button class="btn-table"
-                        onclick='editarCliente(${JSON.stringify(c)})'>
-                        <i class="fa fa-edit"></i>
-                    </button>
-                </td>
-            </tr>
+        <tr>
+            <td>
+              <span class="badge ${m.tipo === "Ingreso" ? "bg-success" : "bg-danger"}">
+                ${m.tipo}
+              </span>
+            </td>
+            <td>${m.categoria || "-"}</td>
+            <td>${m.referencia_id || "-"}</td>
+            <td>${formatearFecha(m.fecha)}</td>
+            <td>$ ${m.monto || 0}</td>
+            <td>${m.descripcion || "-"}</td>
+            <td>
+                <button class="btn-table"
+                  onclick='editarMovimiento(${JSON.stringify(m)})'>
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button class="btn-table"
+                  onclick="eliminarMovimiento('${m._id}')">
+                  <i class="fa-regular fa-trash"></i>
+                </button>
+            </td>
+        </tr>
         `;
             });
-            if ($.fn.DataTable.isDataTable('#Clientes')) {
-                $('#Clientes').DataTable().destroy();
+
+            if ($.fn.DataTable.isDataTable('#Movimientos')) {
+                $('#Movimientos').DataTable().destroy();
             }
 
             inicializarDataTable();
         }
+
         function inicializarDataTable() {
-            table = $('#Clientes').DataTable({
+            table = $('#Movimientos').DataTable({
                 info: false,
                 ordering: true,
                 dom: 'Brtip',
@@ -299,8 +311,9 @@
                 }
             });
         }
+
         function activarBuscador() {
-            const input = document.getElementById("searchCliente");
+            const input = document.getElementById("searchMovimiento");
 
             input.addEventListener("input", function () {
                 clearTimeout(timeoutBusqueda);
@@ -310,65 +323,109 @@
                         table.search(this.value).draw();
                     }
                 }, 300);
-
             });
         }
-        function abrirModal() {
-            document.getElementById("tituloModal").innerText = "Nuevo Cliente";
-            document.getElementById("clienteId").value = "";
-            document.querySelector("form").reset();
+
+        function abrirModalMovimiento() {
+            document.getElementById("tituloMovimiento").innerText = "Nuevo Movimiento";
+            document.getElementById("movimientoId").value = "";
+            document.querySelector("#modalMovimiento form").reset();
+
+            refrescarSelectMDB("tipoMovimiento");
         }
 
-        function editarCliente(c) {
-            document.getElementById("tituloModal").innerText = "Editar Cliente";
+        function editarMovimiento(m) {
+            document.getElementById("tituloMovimiento").innerText = "Editar Movimiento";
 
-            document.getElementById("clienteId").value = c._id;
-            document.getElementById("nombre").value = c.nombre;
-            document.getElementById("identificacion").value = c.identificacion || "";
-            document.getElementById("telefono").value = c.telefono || "";
-            document.getElementById("email").value = c.email || "";
-            document.getElementById("estado").value = c.estado || "Activo";
+            document.getElementById("movimientoId").value = m._id;
+            document.getElementById("tipoMovimiento").value = m.tipo;
+            document.getElementById("categoriaMovimiento").value = m.categoria;
+            document.getElementById("referenciaMovimiento").value = m.referencia_id || "";
+            document.getElementById("fechaMovimiento").value = m.fecha?.split("T")[0];
+            document.getElementById("montoMovimiento").value = m.monto;
+            document.getElementById("descripcionMovimiento").value = m.descripcion || "";
 
-            const modal = new mdb.Modal(document.getElementById("modalCliente"));
+            refrescarSelectMDB("tipoMovimiento");
+
+            const modal = new mdb.Modal(document.getElementById("modalMovimiento"));
             modal.show();
         }
 
-        async function guardarCliente(e) {
+        async function guardarMovimiento(e) {
             e.preventDefault();
 
-            const id = document.getElementById("clienteId").value;
+            const id = document.getElementById("movimientoId").value;
 
             const data = {
-                nombre: document.getElementById("nombre").value,
-                identificacion: document.getElementById("identificacion").value,
-                telefono: document.getElementById("telefono").value,
-                email: document.getElementById("email").value,
-                estado: document.getElementById("estado").value
+                tipo: document.getElementById("tipoMovimiento").value,
+                categoria: document.getElementById("categoriaMovimiento").value,
+                referencia_id: document.getElementById("referenciaMovimiento").value,
+                fecha: document.getElementById("fechaMovimiento").value,
+                monto: Number(document.getElementById("montoMovimiento").value),
+                descripcion: document.getElementById("descripcionMovimiento").value
             };
 
             if (id) {
-                await fetch(`${API_URL}/clientes/${id}`, {
+                await fetch(`${API_URL}/movimientos/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
                 });
             } else {
-                await fetch(`${API_URL}/clientes`, {
+                await fetch(`${API_URL}/movimientos`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
                 });
             }
 
-            const modal = mdb.Modal.getInstance(document.getElementById("modalCliente"));
-            modal.hide();
+            Swal.fire("Éxito", "Movimiento guardado", "success");
 
-            cargarClientes();
+            document.activeElement.blur();
+
+            const modal = mdb.Modal.getInstance(document.getElementById("modalMovimiento"));
+            modal.hide();
             window.location.reload();
+            cargarMovimientos();
         }
 
+        async function eliminarMovimiento(id) {
+            const confirmacion = await Swal.fire({
+                title: "¿Eliminar movimiento?",
+                text: "Esta acción no se puede revertir",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#1D428A',
+                cancelButtonColor: '#CD5151 ',
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            });
+
+            if (!confirmacion.isConfirmed) return;
+
+            await fetch(`${API_URL}/movimientos/${id}`, {
+                method: "DELETE"
+            });
+
+            Swal.fire("Eliminado", "Movimiento eliminado", "success");
+            window.location.reload();
+            cargarMovimientos();
+        }
+
+        function refrescarSelectMDB(id) {
+            const el = document.getElementById(id);
+
+            const instance = mdb.Select.getInstance(el);
+            if (instance) instance.dispose();
+
+            new mdb.Select(el);
+        }
+
+        function formatearFecha(fecha) {
+            if (!fecha) return "-";
+            return new Date(fecha).toLocaleDateString();
+        }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <!-- MDB ESSENTIAL -->
     <script type="text/javascript" src="mdb/js/mdb.umd.min.js"></script>
     <!-- MDB PLUGINS -->
@@ -384,7 +441,6 @@
     <script type="text/javascript" src="js/site.js"></script>
     <!-- Plugin sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.js"></script>

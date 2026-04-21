@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Inmobiliario</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <!-- MDB ESSENTIAL -->
+    <link rel="stylesheet" href="mdb/css/mdb.min.css" />
+    <!-- MDB PLUGINS -->
+    <link rel="stylesheet" href="mdb/plugins/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.2.0/mdb.min.css" rel="stylesheet" />
+    <!-- SITE GENERAL -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+</head>
+
+<body>
+    <nav data-mdb-sidenav-init class="sidenav bg-dark" id="sidenav-1" data-mdb-mode="side" data-mdb-slim="false"
+        data-mdb-slim-collapsed="false" data-mdb-content="#content" data-mdb-accordion="true" data-mdb-mode="side"
+        data-mdb-color="light" data-mdb-scroll-container="#scroll-container">
+        <a data-mdb-ripple-init class="d-flex justify-content-center py-4" href="#!" id="slim-toggler"
+            data-mdb-ripple-color="primary">
+            <img id="PT-logo-full" width="220" src="img/log-azul.png" alt="Logo Portafolio Inmobiliario"
+                draggable="false" data-mdb-slim="false" />
+            <img id="PT-logo-slim" width="59" src="img/isotipo.png" alt="Logo Portafolio Inmobiliario Slim"
+                draggable="false" data-mdb-slim="true" />
+        </a>
+        <ul class="sidenav-menu" id="scroll-container">
+            <li class="sidenav-item">
+                <a class="sidenav-link"><i class="fa-regular fa-menu fa-house me-3"></i><span
+                        data-mdb-slim="false">Inicio</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link active" href="proyecto.html">Dashboard principal</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link"><i class="fa-thin fa-calculator fa-menu fa-icons me-3"
+                        title="Facturación"></i><span data-mdb-slim="false">Facturación</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="contratos.html">Contratos</a>
+                    </li>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="facturas.html">Facturas</a>
+                    </li>
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="movimientos.html">Movimientos</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidenav-item">
+                <a class="sidenav-link"><i class="fa-regular fa-person-digging fa-menu me-3"></i><span
+                        data-mdb-slim="false">Materiales</span></a>
+                <ul class="sidenav-collapse">
+                    <li class="sidenav-item">
+                        <a class="sidenav-link" href="bodega.html">Bodegas</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidenav-item">
+                <a href="clientes.html" class="sidenav-link">
+                    <i class="fa-regular fa-users me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Clientes</span>
+                </a>
+            </li>
+            <li class="sidenav-item">
+                <a href="departamentos.html" class="sidenav-link">
+                    <i class="fa-regular fa-briefcase me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Departamentos</span>
+                </a>
+            </li>
+             <li class="sidenav-item">
+                <a href="#" class="sidenav-link" onclick="cerrarSesion()">
+                    <i class="fa-regular fa-right-from-bracket me-3 fa-menu"></i>
+                    <span data-mdb-slim="false">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main id="content">
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary nav-header">
+            <div class="container-fluid">
+                <a data-mdb-ripple-init data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1" class="btn-bars p-2"
+                    aria-controls="#sidenav-1" aria-haspopup="true">
+                    <i class="fa-regular fa-bars-staggered"></i>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <p class="text-bold mt-3 ms-2">Gestión Inmobiliario</p>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+        <br>
+        <div class="mt-2">
+            <div class="container-main">
+                <div class=" mt-3">
+
+                    <div class="row mb-4">
+                        <div class="col-md-7">
+                            <h4 class="text-primary">Gestión de Facturas</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <input type="search" id="searchFactura" class="form-control" />
+                                    <label class="form-label">Buscar factura</label>
+                                </div>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" onclick="abrirModalFactura()" data-mdb-modal-init
+                                data-mdb-target="#modalFactura">
+                                <i class="fas fa-plus"></i> Nueva Factura
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row" id="contenedorFacturas"></div>
+
+                    <nav class="mt-4">
+                        <ul class="pagination justify-content-center" id="paginacion"></ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        </div>
+        <!-- Footer -->
+    </main>
+    <div class="modal fade" id="modalFactura" data-mdb-backdrop="static" tabindex="-1" data-mdb-keyboard="false"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 id="tituloFactura">Nueva Factura</h5>
+                    <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form onsubmit="guardarFactura(event)">
+
+                        <input type="hidden" id="facturaId">
+
+                        <div class="mb-3">
+                            <select id="clienteFactura" class="form-select" data-mdb-select-init
+                                onchange="filtrarContratos()"></select>
+                            <label class="form-label select-label">Cliente</label>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <select id="contratoFactura" class="form-select" data-mdb-select-init></select>
+                            <label class="form-label select-label">Contrato</label>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline mb-3" data-mdb-input-init>
+                                    <input type="date" id="fechaEmision" class="form-control" required />
+                                    <label class="form-label">Fecha emisión</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-outline mb-3" data-mdb-input-init>
+                                    <input type="date" id="fechaVencimiento" class="form-control" required />
+                                    <label class="form-label">Fecha vencimiento</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-outline mb-3" data-mdb-input-init>
+                            <input type="number" id="montoTotal" class="form-control" required />
+                            <label class="form-label">Monto total</label>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <select id="estadoFactura" class="form-select" data-mdb-select-init>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Pagada">Pagada</option>
+                                <option value="Vencida">Vencida</option>
+                                <option value="Anulada">Anulada</option>
+                            </select>
+                            <label class="form-label select-label">Estado</label>
+                        </div>
+
+                        <button class="btn btn-primary w-100">
+                            Guardar Factura
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        if (!localStorage.getItem("usuario")) {
+            window.location.href = "index.html";
+        }
+        const API_URL = "http://localhost:5000/api";
+        let clientesGlobal = [];
+        let contratosGlobal = [];
+        let facturasGlobal = [];
+        let mapaClientesGlobal = {};
+        let paginaActual = 1;
+        const porPagina = 6;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarFacturas();
+            activarBuscador();
+        });
+
+        async function cargarFacturas() {
+            try {
+                const [resFact, resClientes] = await Promise.all([
+                    fetch(`${API_URL}/facturas`),
+                    fetch(`${API_URL}/clientes`)
+                ]);
+
+                const facturas = await resFact.json();
+                const clientes = await resClientes.json();
+
+                mapaClientesGlobal = {};
+                clientes.forEach(c => mapaClientesGlobal[c._id] = c);
+
+                facturasGlobal = facturas;
+                paginaActual = 1;
+
+                renderLista();
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+
+        function renderLista() {
+            const inicio = (paginaActual - 1) * porPagina;
+            const fin = inicio + porPagina;
+
+            const paginaData = facturasGlobal.slice(inicio, fin);
+
+            renderFacturas(paginaData);
+            renderPaginacion();
+        }
+
+
+        function renderFacturas(facturas) {
+            const contenedor = document.getElementById("contenedorFacturas");
+            contenedor.innerHTML = "";
+
+            if (facturas.length === 0) {
+                contenedor.innerHTML = `<p>No hay facturas</p>`;
+                return;
+            }
+
+            facturas.forEach(f => {
+
+                const cliente = mapaClientesGlobal[f.cliente_id];
+
+                contenedor.innerHTML += `
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+
+        <div class="card-header">
+          <button class="btn btn-sm btn-outline-primary me-2"
+                onclick='editarFactura(${JSON.stringify(f)})'>
+                Editar
+              </button>
+        </div>
+
+        <div class="card-body">
+
+          <p>Consecutivo Factura: #${f._id || 0}</p>
+
+          <p>Número contrato: #${f.contrato_id || 0}</p>
+
+          <p>Fecha de Emisión: ${formatearFecha(f.fecha_emision)}</p>
+
+          <p>Fecha de Vencimiento: ${formatearFecha(f.fecha_vencimiento)}</p>
+
+          <p>Cliente: ${cliente?.nombre || "N/A"}</p>
+
+          <p>Estado:
+            <span class="badge ${f.estado === "Pagada" ? "bg-success" :
+                        f.estado === "Pendiente" ? "bg-warning" :
+                            f.estado === "Vencida" ? "bg-danger" : "bg-secondary"
+                    }">
+              ${f.estado}
+            </span>
+          </p>
+
+          <hr>
+
+          <p class="fw-bold">Información Orden de compra</p>
+
+          
+
+          ${f.detalle && f.detalle.length > 0
+                        ? f.detalle.map(d => `
+                <p>Descripción: ${d.descripcion || "-"}</p>
+                <p>Monto: $${d.monto || 0}</p>
+              `).join("")
+                        : `<p>Sin detalle</p>`
+                    }
+            <p><strong>Total:</strong> $${f.monto_total || 0}</p>
+        </div>
+
+      </div>
+    </div>
+    `;
+            });
+        }
+
+
+        function renderPaginacion() {
+            const totalPaginas = Math.ceil(facturasGlobal.length / porPagina);
+            const pag = document.getElementById("paginacion");
+
+            pag.innerHTML = "";
+
+
+            pag.innerHTML += `
+    <li class="page-item ${paginaActual === 1 ? "disabled" : ""}">
+      <a class="page-link" href="#" onclick="cambiarPagina(${paginaActual - 1})">
+        Previous
+      </a>
+    </li>
+  `;
+
+
+            for (let i = 1; i <= totalPaginas; i++) {
+                pag.innerHTML += `
+      <li class="page-item ${i === paginaActual ? "active" : ""}">
+        <a class="page-link" href="#" onclick="cambiarPagina(${i})">
+          ${i}
+        </a>
+      </li>
+    `;
+            }
+
+
+            pag.innerHTML += `
+    <li class="page-item ${paginaActual === totalPaginas ? "disabled" : ""}">
+      <a class="page-link" href="#" onclick="cambiarPagina(${paginaActual + 1})">
+        Next
+      </a>
+    </li>
+  `;
+        }
+
+
+        function cambiarPagina(p) {
+            const totalPaginas = Math.ceil(facturasGlobal.length / porPagina);
+
+            if (p < 1 || p > totalPaginas) return;
+
+            paginaActual = p;
+            renderLista();
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        function activarBuscador() {
+            const input = document.getElementById("searchFactura");
+
+            input.addEventListener("input", function () {
+                const valor = this.value.toLowerCase();
+
+                const filtradas = facturasGlobal.filter(f =>
+                    JSON.stringify(f).toLowerCase().includes(valor)
+                );
+
+                paginaActual = 1;
+
+                renderFacturas(filtradas);
+                renderPaginacionFiltrada(filtradas);
+            });
+        }
+
+
+        function renderPaginacionFiltrada(data) {
+            const totalPaginas = Math.ceil(data.length / porPagina);
+            const pag = document.getElementById("paginacion");
+
+            pag.innerHTML = "";
+
+            for (let i = 1; i <= totalPaginas; i++) {
+                pag.innerHTML += `
+      <li class="page-item ${i === paginaActual ? "active" : ""}">
+        <a class="page-link" href="#" onclick="cambiarPagina(${i})">${i}</a>
+      </li>
+    `;
+            }
+        }
+
+
+        function formatearFecha(fecha) {
+            if (!fecha) return "-";
+            return new Date(fecha).toLocaleDateString();
+        }
+        async function cargarSelectsFactura() {
+            const [resClientes, resContratos] = await Promise.all([
+                fetch(`${API_URL}/clientes`),
+                fetch(`${API_URL}/contratos`)
+            ]);
+
+            clientesGlobal = await resClientes.json();
+            contratosGlobal = await resContratos.json();
+
+            const selectCliente = document.getElementById("clienteFactura");
+
+            selectCliente.innerHTML = `<option value="">Seleccione cliente</option>`;
+
+            clientesGlobal.forEach(c => {
+                selectCliente.innerHTML += `<option value="${c._id}">${c.nombre}</option>`;
+            });
+
+            refrescarSelectMDB("clienteFactura");
+        }
+        function filtrarContratos() {
+            const clienteId = document.getElementById("clienteFactura").value;
+            const selectContrato = document.getElementById("contratoFactura");
+
+            selectContrato.innerHTML = `<option value="">Seleccione contrato</option>`;
+
+            const filtrados = contratosGlobal.filter(c => c.cliente_id === clienteId);
+
+            filtrados.forEach(c => {
+                selectContrato.innerHTML += `
+      <option value="${c._id}">
+        Contrato #${c._id}
+      </option>
+    `;
+            });
+
+            refrescarSelectMDB("contratoFactura");
+        }
+        function abrirModalFactura() {
+            document.getElementById("tituloFactura").innerText = "Nueva Factura";
+            document.getElementById("facturaId").value = "";
+            document.querySelector("#modalFactura form").reset();
+
+            document.getElementById("clienteFactura").disabled = false;
+            document.getElementById("contratoFactura").disabled = false;
+            document.getElementById("fechaEmision").disabled = false;
+            document.getElementById("fechaVencimiento").disabled = false;
+
+            cargarSelectsFactura();
+            refrescarSelectMDB("clienteFactura");
+            refrescarSelectMDB("contratoFactura");
+            refrescarSelectMDB("estadoFactura");
+        }
+        async function editarFactura(f) {
+            document.getElementById("tituloFactura").innerText = "Editar Factura";
+
+            document.getElementById("facturaId").value = f._id;
+
+            await cargarSelectsFactura();
+
+            document.getElementById("clienteFactura").value = f.cliente_id;
+
+            filtrarContratos();
+
+            document.getElementById("contratoFactura").value = f.contrato_id;
+
+            document.getElementById("fechaEmision").value = f.fecha_emision?.split("T")[0];
+            document.getElementById("fechaVencimiento").value = f.fecha_vencimiento?.split("T")[0];
+
+            document.getElementById("montoTotal").value = f.monto_total;
+            document.getElementById("estadoFactura").value = f.estado;
+
+            document.getElementById("clienteFactura").disabled = true;
+            document.getElementById("contratoFactura").disabled = true;
+            document.getElementById("fechaEmision").disabled = true;
+            document.getElementById("fechaVencimiento").disabled = true;
+
+            refrescarSelectMDB("clienteFactura");
+            refrescarSelectMDB("contratoFactura");
+            refrescarSelectMDB("estadoFactura");
+
+            const modal = new mdb.Modal(document.getElementById("modalFactura"));
+            modal.show();
+        }
+        async function guardarFactura(e) {
+            e.preventDefault();
+
+            const id = document.getElementById("facturaId").value;
+
+            const data = {
+                cliente_id: document.getElementById("clienteFactura").value,
+                contrato_id: document.getElementById("contratoFactura").value,
+                fecha_emision: document.getElementById("fechaEmision").value,
+                fecha_vencimiento: document.getElementById("fechaVencimiento").value,
+                monto_total: Number(document.getElementById("montoTotal").value),
+                estado: document.getElementById("estadoFactura").value
+            };
+
+            try {
+                if (id) {
+                    await fetch(`${API_URL}/facturas/${id}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            monto_total: data.monto_total,
+                            estado: data.estado
+                        })
+                    });
+                } else {
+                    await fetch(`${API_URL}/facturas`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data)
+                    });
+                }
+
+                Swal.fire("Éxito", "Factura guardada correctamente", "success");
+                document.activeElement.blur();
+                const modal = mdb.Modal.getInstance(document.getElementById("modalFactura"));
+                modal.hide();
+
+                cargarFacturas();
+                window.location.reload();
+
+            } catch (error) {
+                console.error(error);
+                Swal.fire("Error", "No se pudo guardar", "error");
+            }
+        }
+        function refrescarSelectMDB(id) {
+            const el = document.getElementById(id);
+
+            const instance = mdb.Select.getInstance(el);
+            if (instance) instance.dispose();
+
+            new mdb.Select(el);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <!-- MDB ESSENTIAL -->
+    <script type="text/javascript" src="mdb/js/mdb.umd.min.js"></script>
+    <!-- MDB PLUGINS -->
+    <script type="text/javascript" src="mdb/plugins/js/all.min.js"></script>
+    <script src="https://kit.fontawesome.com/4b2f294736.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Plugin JS para line numbers -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script type="text/javascript" src="js/site.js"></script>
+    <!-- Plugin sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+</body>
+
+</html>
